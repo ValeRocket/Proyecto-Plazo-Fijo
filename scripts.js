@@ -2,8 +2,8 @@ let capital = parseInt(prompt("Ingrese el monto"))
 
 function socialClub(){
     alert("Su capital supera los 150,000$, accedera al SocialClub del Banco")
-        let datosSocialClub = (prompt("Ingrese nombre y apellido"))
-        alert("Bienvenido al SocialClub\n" + datosSocialClub )
+       // let datosSocialClub = (prompt("Ingrese nombre y apellido"))
+        //alert("Bienvenido al SocialClub\n" + datosSocialClub )
 }
 
 function calculoPlazoFijo(numero1,numero2,numero3){
@@ -16,9 +16,22 @@ for(i=0; i <1 ;i++){
     alert("Usted ahora posee"+ "\n$" + parseInt(operacion + capital))
 
     
-    if(operacion <=150.000){
+    if(operacion <150.000){
         alert("Aun no puede ingresar al social club")
     }else {
         socialClub()
     }
+
+    const usuariosBanco = [];
+    let cantidad = 1;
+
+   do{
+        let datosSocialClub = prompt("Ingrese nombre y apellido")
+        alert("Bienvenido al SocialClub\n" + datosSocialClub + "\npuede ver sus datos en consola" )
+        usuariosBanco.push(datosSocialClub);
+        console.log(usuariosBanco +"\n" +"$" +parseInt(operacion))
+    }while(usuariosBanco.length != cantidad)
 }
+
+
+
