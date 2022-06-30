@@ -19,19 +19,16 @@ for(i=0; i <1 ;i++){
     if(operacion <150.000){
         alert("Aun no puede ingresar al social club")
     }else {
-        socialClub()
-    }
+        const usuariosBanco = [];
 
-    const usuariosBanco = [];
-    let cantidad = 1;
-
-   do{
         let datosSocialClub = prompt("Ingrese nombre y apellido")
         alert("Bienvenido al SocialClub\n" + datosSocialClub + "\npuede ver sus datos en consola" )
         usuariosBanco.push(datosSocialClub);
         console.log(usuariosBanco +"\n" +"$" +parseInt(operacion))
-    }while(usuariosBanco.length != cantidad)
+
+        console.log (usuariosBanco.some((el) => el.nombre !== "")) 
+
+        const busqueda = usuariosBanco.find((el) => el.nombre !== "")
+        console.log(busqueda)
+    }
 }
-
-
-
