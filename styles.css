@@ -1,0 +1,73 @@
+body {
+    background-color: rgb(rgba(0, 0, 0, 0.997));
+    background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(dc133714-d929-400c-bdbd-1cb7bb410921.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+
+.h1{
+  background-color: white;
+  width: 25%;
+}
+
+.h3{
+  background-color: white;
+  width: 6%;
+}
+
+.zona2{
+  margin-left: 600px;
+  margin-top: -300px;
+}
+
+.zona2 h2,h3{
+  background-color: white;
+}
+
+
+.zonaIngreso{
+    display: grid;
+    margin-bottom: 100px;
+    margin-left: 15px;
+}
+
+
+.calculadora input{
+    width: 10%;
+    border: none;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    background-color: white;
+    color: black;
+    font-weight: 1500;
+    font-size: 20px;
+}
+
+.calculadora label{
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    color: white;
+}
+
+.button{
+    background-color: white;
+  color: #ff5d00;
+  background-color: black;
+  padding: 24px;
+  margin-top: 10px;
+  font-size: 20px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  border-radius: 0.5rem;
+  width: 15%;
+  text-align: center;
+  border: none;
+}
+
+.h2vip{
+  background-color: white;
+  width: 50%;
+}

@@ -3,17 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name= "viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
     <title>Document</title>
 </head>
-<body>
-    
-    <div id="calculator"></div> 
-    <div id="calculoCapital"></div>
-    <div id="boton"></div>
-    <div id="resultado"></div>
 
-    <label for="dasda"></label>
-    <script src="/scripts.js"></script>
+<h1 class="h1">Calculadora de Plazo Fijo</h1>
+
+<div class="calculadora">
+    <div class="zonaIngreso">
+        <label>Nombre</label>
+        <input type="text" id="nombre"/>
+        <label>Apellido</label>
+        <input type="text" id="apellido"/>
+        <label>Capital a ingresar</label>
+        <input type="number" id="capital"/>
+        <button id="botonCalcular" class="button">Calcular</button>
+        <div class="zona2">
+            <h2>¿Como funciona la calculadora de plazo fijo?</h2>
+            <h3>1- Ingrese su nombre y apellido <br>2-Ingrese su capital <br>3- Su capital se multiplica por 0,3%, luego por 30 dias, y se divide en los 365 dias del año, cando como resultado final el total de sus ganancias <br>4-Si su capital supera los $100.000, accedera al SocialClub</h3>
+        </div>
+    </div>
+
+        <h3 class="h3">Sus Datos</h3>
+        <label>Nombre</label>
+        <input type="text" id="resultNombre">
+        <label >Apellido</label>
+        <input type="text" id="resultApellido">
+        <label>Ganancia Mensual</label>
+        <input type="text" id="resultado"/>
+        <label>Capital Total</label>
+        <input type="number" id="resultadoTotal"/>
+</div>
+
+<div id="zonaVip"></div>
+
+    <script src="scripts.js"></script>
 </body>
 </html>

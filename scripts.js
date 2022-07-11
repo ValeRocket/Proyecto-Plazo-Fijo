@@ -1,56 +1,39 @@
-//let capital = parseInt(prompt("Ingrese el monto"))
 
-function socialClub(){
-    alert("Su capital supera los 150,000$, accedera al SocialClub del Banco")
-       // let datosSocialClub = (prompt("Ingrese nombre y apellido"))
-        //alert("Bienvenido al SocialClub\n" + datosSocialClub )
+function plazoFijo(numero1, numero2, numero3) {
+    return numero1 * numero2 / numero3;
 }
 
-function calculoPlazoFijo(numero1,numero2,numero3){
-   return numero1 * numero2 / numero3;
-}
+let botonCalcular = document.querySelector("#botonCalcular");
+botonCalcular.addEventListener("click", () => { 
+    let capital = parseFloat(document.querySelector("#capital").value)
+    let resultado = capital * plazoFijo(0.3, 30, 365); 
+    let nombre = document.querySelector("#nombre").value;
+    let apellido = document.querySelector("#apellido").value;
 
+    document.querySelector("#resultado").value = parseInt(resultado); 
+    document.querySelector("#resultNombre").value = nombre;
+    document.querySelector("#resultApellido").value = apellido;
+    let vip = document.querySelector("#resultadoTotal").value = parseInt(capital + resultado);
+        if(vip > 100000){
+            let zonaVip = document.getElementById("zonaVip");
+            zonaVip.innerHTML = "<h2 class =h2vip >Su capital supera los $100.000, puede acceder al SocialClub</h2> <button id=botonVip class=button>INGRESAR</button>"
 
-for(i=0; i <1 ;i++){
+            let sociosVip = []
 
-    let datosUsuario = document.getElementById("calculator")
-    datosUsuario.innerHTML = "<input type=text> Nombre <input type=text> Apellido"
-
-    let calculo = document.getElementById("calculoCapital")
-    calculo.innerHTML = "<input type=text> Capital"
-
-    let boton = document.getElementById("boton")
-    boton.innerHTML = "<input type=button> Calcular"
-
-    let resultado = document.getElementById("resultado")
-    resultado.innerHTML = "<input type=text>"
-
-
-    let operacion = capital*calculoPlazoFijo(0.3, 30, 365)
-    alert("La ganancia mensual de su plazo fijo es de\n" + "$" +parseInt(operacion) + "\nmensuales")
-    alert("Usted ahora posee"+ "\n$" + parseInt(operacion + capital))
-
-    
-    if(operacion <150.000){
-        alert("Aun no puede ingresar al social club")
-    }else {
-
-        let datosSocialClub = prompt("Ingrese nombre y apellido")
-        alert("Bienvenido al SocialClub\n" + datosSocialClub + "\npuede ver sus datos en consola" )
-
-        class categoria{
-            constructor(nombre,operacion){
-                this.nombre = nombre.toUpperCase()
-                this.capital = parseFloat(operacion)
+            function usuario(nombre, apellido, capital) {
+                this.nombre = nombre;
+                this.apellido = apellido;
+                this.capital = capital;
             }
-        }
-    
-        const usuariosBanco = []
-        usuariosBanco.push(new categoria (datosSocialClub + operacion))
 
-        console.log (usuariosBanco.some((el) => el.nombre !== "")) 
-        const busqueda = usuariosBanco.find((el) => el.nombre !== "")
-        console.log(busqueda)
-    }
-}
+            let botonVip = document.querySelector("#botonVip");
+            botonVip.addEventListener("click", () => {
+                const usuario1 = new usuario(nombre, apellido,vip);
+                alert("Bienvenido al SocialClub, vea sus datos en Consola")
+                sociosVip.push(usuario)
+                console.log(usuario1)
+            })
+        }
+    } 
+)
 
