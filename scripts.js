@@ -37,6 +37,7 @@ botonCalcular.addEventListener("click", () => {
                 const almacenamiento = (nombre,apellido,capital) => {localStorage.setItem(nombre,apellido,capital)}
                 almacenamiento("listaUsuarios" , JSON.stringify(usuario1))
                 
+                JSON.stringify(localStorage.getItem(usuario1))
             })
         }
     } 
