@@ -3,10 +3,12 @@ function plazoFijo(numero1, numero2, numero3) {
     return numero1 * numero2 / numero3;
 }
 
-function usuario(nombre, apellido, capital) {
-    this.nombre = nombre;
-    this.apellido = apellido;
-    this.capital = capital;
+class Usuario {
+     constructor (nombre, apellido, capital){
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.capital = capital;
+    }
 }
 
 let botonCalcular = document.querySelector("#botonCalcular");
@@ -25,13 +27,13 @@ botonCalcular.addEventListener("click", () => {
             zonaVip.innerHTML = "<h2 class =h2vip >Su capital supera los $100.000, puede acceder al SocialClub</h2> <button id=botonVip class=button>INGRESAR</button>"
 
             let sociosVip = []
-            usuario()
+            new Usuario()
 
             let botonVip = document.querySelector("#botonVip");
             botonVip.addEventListener("click", () => {
-                const usuario1 = new usuario(nombre, apellido,vip);
+                const usuario1 = new Usuario(nombre, apellido,vip);
                 alert("Bienvenido al SocialClub, vea sus datos en Consola")
-                sociosVip.push(usuario)
+                sociosVip.push(Usuario)
                 console.log(usuario1)
 
                 const almacenamiento = (nombre,apellido,capital) => {localStorage.setItem(nombre,apellido,capital)}
