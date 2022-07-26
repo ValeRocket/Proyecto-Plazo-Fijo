@@ -4,15 +4,19 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
   }
 
 .h1{
   background-color: white;
+  border-radius: 4px;
   width: 25%;
 }
 
 .h3{
   background-color: white;
+  border-radius: 4px;
   width: 6%;
 }
 
@@ -23,6 +27,7 @@ body {
 
 .zona2 h2,h3{
   background-color: white;
+  border-radius: 4px;
 }
 
 

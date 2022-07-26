@@ -32,7 +32,12 @@ botonCalcular.addEventListener("click", () => {
             let botonVip = document.querySelector("#botonVip");
             botonVip.addEventListener("click", () => {
                 const usuario1 = new Usuario(nombre, apellido,vip);
-                alert("Bienvenido al SocialClub, vea sus datos en Consola")
+                swal({
+                    title: "Bienvenido al SocialClub!",
+                    text: "Vea sus datos en consola",
+                    icon: "success",
+                    button: "ACEPTAR",
+                  });
                 sociosVip.push(Usuario)
                 console.log(usuario1)
 
@@ -42,6 +47,8 @@ botonCalcular.addEventListener("click", () => {
                 JSON.stringify(localStorage.getItem(usuario1))
             })
         }
+
+        
     } 
 )
 
