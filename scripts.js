@@ -42,48 +42,38 @@ botonCalcular.addEventListener("click", () => { //Generando el evento de calcula
         sociosVip.push(Usuario)
         console.log(usuario1)
         
-        function inicializarElementos() {
-          tabla = document.getElementById("tabla-productos");
-        }
-  
+       
+        let tabla = document.getElementById("tabla-productos");
+      
         let entry = document.querySelector("#botonVip");
-        entry.addEventListener("click", registro);
-        function registro(e) {
-          e.preventDefault()
-  
-          localStorage.clear()
-  
-          let total = document.querySelector("#resultadoTotal").value = parseInt(capital + resultado);
-          let nombre = document.querySelector("#nombre").value;
-          let apellido = document.querySelector("#apellido").value;
+        entry.addEventListener("click", () => {
+          let nombreTodo = document.getElementsByClassName("#nombre").value;
+          let apellidoTodo = document.getElementsByClassName("#apellido").value;
+          let totalTodo = document.getElementsByClassName("#capital").value = parseInt(capital + resultado);
   
           let usuarioARegistrar = new Producto(
-            nombre,
-            apellido,
-            total
+            nombreTodo,
+            apellidoTodo,
+            totalTodo,
           );
-          sociosVip.push(usuarioARegistrar);
+          Usuario.push(usuarioARegistrar);
+          usuarioARegistrar.push(tabla)
           agregarProductosTabla();
+
+          console.log(tabla)
   
           function agregarProductosTabla() {
             sociosVip.forEach((usuario) => {
               let filaTabla = document.createElement("tr");
               filaTabla.innerHTML = `
-                            <td>${usuario.nombre}</td>
-                            <td>${usuario.apellido}</td>
-                            <td>${usuario.total}</td>`;
+                            <td>${usuario.nombreTodo}</td>
+                            <td>${usuario.apellidoTodo}</td>
+                            <td>${usuario.totalTodo}</td>`;
               tabla.tBodies[0].append(filaTabla);
-            });
-            calcularTotales()
-          }
+            });}
+        }
+        );
   
-          /// Secuencia
-          function main() {
-            inicializarElementos();
-          }
-          ///inicio de ciclo.
-          main()
-
 
         const almacenamiento = (nombre, apellido, capital) => { localStorage.setItem(nombre, apellido, capital) }
         almacenamiento("listaUsuarios", JSON.stringify(usuario1))
@@ -91,10 +81,14 @@ botonCalcular.addEventListener("click", () => { //Generando el evento de calcula
         JSON.stringify(localStorage.getItem(usuario1))
       } //Cierre Evento VIP
      )//Cierre evento vip
-     
+
     } //Cierre if 
   } //Cierre Evento Principal
 ) //Cierre boton calcular principal
 
-
+let urlApi = 'https://jsonplaceholder.typicode.com/users'
+fetch(urlApi)
+	.then(response => response.json())
+	.then(response => console.log(response))
+	.catch(err => console.error(err));
 
