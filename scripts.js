@@ -1,9 +1,11 @@
-
-function plazoFijo(numero1, numero2, numero3) { // Funcion que calcula los valores numericos
+// Funcion que calcula los valores numericos
+function plazoFijo(numero1, numero2, numero3) { 
   return numero1 * numero2 / numero3;
 }
 
-class Usuario {  //Clase constructora del Usuario
+
+//Clase constructora del Usuario
+class Usuario {
   constructor(nombre, apellido, capital) {
     this.nombre = nombre;
     this.apellido = apellido;
@@ -11,8 +13,9 @@ class Usuario {  //Clase constructora del Usuario
   }
 }
 
+//Generando el evento de calculadora de plazo fijo
 let botonCalcular = document.querySelector("#botonCalcular");
-botonCalcular.addEventListener("click", () => { //Generando el evento de calculadora de plazo fijo
+botonCalcular.addEventListener("click", () => { 
   let capital = parseFloat(document.querySelector("#capital").value)
   let resultado = capital * plazoFijo(0.3, 30, 365);
   let nombre = document.querySelector("#nombre").value;
@@ -23,7 +26,8 @@ botonCalcular.addEventListener("click", () => { //Generando el evento de calcula
   document.querySelector("#resultApellido").value = apellido;
   let vip = document.querySelector("#resultadoTotal").value = parseInt(capital + resultado);
 
-  if (vip > 100000) { // Generando la seccion "VIP" del proyecto
+// Generando la seccion "VIP" del proyecto
+  if (vip > 100000) { 
     let zonaVip = document.getElementById("zonaVip");
     zonaVip.innerHTML = "<h2 class =h2vip >Su capital supera los $100.000, puede acceder al SocialClub</h2> <button id=botonVip class=button>INGRESAR</button>"
 
@@ -33,48 +37,60 @@ botonCalcular.addEventListener("click", () => { //Generando el evento de calcula
     let botonVip = document.querySelector("#botonVip");
     botonVip.addEventListener("click", () => {
       const usuario1 = new Usuario(nombre, apellido, vip);
-      swal({
-        title: "Bienvenido al SocialClub!",
-        text: "Vea sus datos en la tabla de abajo!",
-        icon: "success",
-        button: "ACEPTAR",
+
+//Sweet Alert
+swal({
+  title: "Bienvenido al SocialClub!",
+  text: "Vea sus datos en la tabla de abajo!",
+  icon: "success",
+  button: "ACEPTAR",
       });
         sociosVip.push(Usuario)
         console.log(usuario1)
-        
-       
-        let tabla = document.getElementById("tabla-productos");
-      
-        let entry = document.querySelector("#botonVip");
-        entry.addEventListener("click", () => {
-          let nombreTodo = document.getElementsByClassName("#nombre").value;
-          let apellidoTodo = document.getElementsByClassName("#apellido").value;
-          let totalTodo = document.getElementsByClassName("#capital").value = parseInt(capital + resultado);
-  
-          let usuarioARegistrar = new Producto(
-            nombreTodo,
-            apellidoTodo,
-            totalTodo,
-          );
-          Usuario.push(usuarioARegistrar);
-          usuarioARegistrar.push(tabla)
-          agregarProductosTabla();
 
-          console.log(tabla)
-  
-          function agregarProductosTabla() {
-            sociosVip.forEach((usuario) => {
-              let filaTabla = document.createElement("tr");
-              filaTabla.innerHTML = `
-                            <td>${usuario.nombreTodo}</td>
-                            <td>${usuario.apellidoTodo}</td>
-                            <td>${usuario.totalTodo}</td>`;
-              tabla.tBodies[0].append(filaTabla);
-            });}
+
+/*------------------------------------------------------------------------------ */
+        function inicializarElementos(){
+          tabla = document.getElementById("tabla-productos")
         }
-        );
-  
 
+
+        let entry = document.getElementById("botonVip");
+        entry.addEventListener("click", registro);
+        function registro(e){
+          e.preventDefault()
+
+          let nombreFinal = document.querySelector("#resultNombre").value = nombre;
+          let apellidoFinal = document.querySelector("#resultApellido").value = apellido;
+          let totalTotal = document.querySelector("#resultadoTotal").value = parseInt(capital + resultado);
+        
+
+        let usuarioARegistrar = new Usuario(
+          nombreFinal,
+          apellidoFinal,
+          totalTotal,
+      );
+
+      sociosVip.push(usuarioARegistrar)
+
+
+      function agregarProductosTabla(){
+        sociosVip.forEach((Usuario) =>{
+          let filatabla = document.createElement("tr");
+          filatabla.innerHTML = `
+          <td>${Usuario.nombre}</td>
+          <td>${Usuario.apellido}</td>
+          <td>${Usuario.capital}</td>`;
+        })
+      }
+
+      agregarProductosTabla();
+      inicializarElementos();
+    }
+//----------------------------------------------------------------------------------------    
+   
+    
+//JSON
         const almacenamiento = (nombre, apellido, capital) => { localStorage.setItem(nombre, apellido, capital) }
         almacenamiento("listaUsuarios", JSON.stringify(usuario1))
 
