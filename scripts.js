@@ -1,3 +1,5 @@
+let persona = []
+
 // Funcion que calcula los valores numericos
 function plazoFijo(numero1, numero2, numero3) { 
   return numero1 * numero2 / numero3;
@@ -16,10 +18,10 @@ class Usuario {
 //Generando el evento de calculadora de plazo fijo
 let botonCalcular = document.querySelector("#botonCalcular");
 botonCalcular.addEventListener("click", () => { 
-  let capital = parseFloat(document.querySelector("#capital").value)
-  let resultado = capital * plazoFijo(0.3, 30, 365);
-  let nombre = document.querySelector("#nombre").value;
-  let apellido = document.querySelector("#apellido").value;
+let capital = parseFloat(document.querySelector("#capital").value)
+let resultado = capital * plazoFijo(0.3, 30, 365);
+let nombre = document.querySelector("#nombre").value;
+let apellido = document.querySelector("#apellido").value;
 
   document.querySelector("#resultado").value = parseInt(resultado);
   document.querySelector("#resultNombre").value = nombre;
@@ -45,48 +47,54 @@ swal({
   icon: "success",
   button: "ACEPTAR",
       });
-        sociosVip.push(Usuario)
-        console.log(usuario1)
+
+    sociosVip.push(usuario1)
+    console.log(sociosVip)
 
 
 /*------------------------------------------------------------------------------ */
-        function inicializarElementos(){
-          tabla = document.getElementById("tabla-productos")
-        }
+
+function inicializarElementos(){
+  tabla = document.getElementById("tablaVip")
+  nombre = document.querySelector("#nombre").value;
+  apellido = document.querySelector("#apellido").value;
+  capital = parseFloat(document.querySelector("#capital").value)
+}
+
+function inicializarEventos(){
+  tabla.onsubmit = (event) => validarFormulario(event);
+}
+
+function validarFormulario(event){
+  event.preventDefault();
+  let nombre = nombre.value
+  let apellido = apellido.value
+  let capital = capital.value
+  let producto = new Usuario(nombre, apellido, capital)
+  Usuario.push(producto);
+  formulario.reset();
+  agregarProductosTabla();
+}
+
+function agregarProductosTabla(){
+sociosVip.forEach((Usuario) =>{
+  let filatabla = document.createElement("tr");
+  filatabla.innerHTML = `
+  <td>${Usuario.nombre}</td>
+  <td>${Usuario.apellido}</td>
+  <td>${Usuario.capital}</td>`;
+  tabla.tBodies[0].append(filatabla)
+})
+}
+
+function main() {
+ inicializarEventos(); 
+ inicializarElementos();
+}
+main()
 
 
-        let entry = document.getElementById("botonVip");
-        entry.addEventListener("click", registro);
-        function registro(e){
-          e.preventDefault()
 
-          let nombreFinal = document.querySelector("#resultNombre").value = nombre;
-          let apellidoFinal = document.querySelector("#resultApellido").value = apellido;
-          let totalTotal = document.querySelector("#resultadoTotal").value = parseInt(capital + resultado);
-        
-
-        let usuarioARegistrar = new Usuario(
-          nombreFinal,
-          apellidoFinal,
-          totalTotal,
-      );
-
-      sociosVip.push(usuarioARegistrar)
-
-
-      function agregarProductosTabla(){
-        sociosVip.forEach((Usuario) =>{
-          let filatabla = document.createElement("tr");
-          filatabla.innerHTML = `
-          <td>${Usuario.nombre}</td>
-          <td>${Usuario.apellido}</td>
-          <td>${Usuario.capital}</td>`;
-        })
-      }
-
-      agregarProductosTabla();
-      inicializarElementos();
-    }
 //----------------------------------------------------------------------------------------    
    
     
@@ -101,6 +109,7 @@ swal({
     } //Cierre if 
   } //Cierre Evento Principal
 ) //Cierre boton calcular principal
+
 
 let urlApi = 'https://jsonplaceholder.typicode.com/users'
 fetch(urlApi)
