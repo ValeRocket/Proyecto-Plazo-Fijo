@@ -72,7 +72,7 @@ function validarFormulario(event){
   let capital = capital.value
   let producto = new Usuario(nombre, apellido, capital)
   Usuario.push(producto);
-  formulario.reset();
+  tabla.reset();
   agregarProductosTabla();
 }
 
@@ -88,8 +88,8 @@ sociosVip.forEach((Usuario) =>{
 }
 
 function main() {
- inicializarEventos(); 
- inicializarElementos();
+  inicializarElementos();
+  inicializarEventos(); 
 }
 main()
 
