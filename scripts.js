@@ -1,5 +1,3 @@
-let persona = []
-
 // Funcion que calcula los valores numericos
 function plazoFijo(numero1, numero2, numero3) { 
   return numero1 * numero2 / numero3;
@@ -16,21 +14,21 @@ class Usuario {
 }
 
 //Generando el evento de calculadora de plazo fijo
-let botonCalcular = document.querySelector("#botonCalcular");
+let botonCalcular = document.querySelector("#botonCalcular"); //Llamando a los inputs
 botonCalcular.addEventListener("click", () => { 
 let capital = parseFloat(document.querySelector("#capital").value)
 let resultado = capital * plazoFijo(0.3, 30, 365);
 let nombre = document.querySelector("#nombre").value;
 let apellido = document.querySelector("#apellido").value;
 
-  document.querySelector("#resultado").value = parseInt(resultado);
-  document.querySelector("#resultNombre").value = nombre;
-  document.querySelector("#resultApellido").value = apellido;
-  let vip = document.querySelector("#resultadoTotal").value = parseInt(capital + resultado);
+document.querySelector("#resultado").value = parseInt(resultado); //Mostrando los valores de los inputs
+document.querySelector("#resultNombre").value = nombre;
+document.querySelector("#resultApellido").value = apellido;
+let vip = document.querySelector("#resultadoTotal").value = parseInt(capital + resultado);
 
 // Generando la seccion "VIP" del proyecto
   if (vip > 100000) { 
-    let zonaVip = document.getElementById("zonaVip");
+    let zonaVip = document.getElementById("zonaVip"); //Creando el boton para los Usuarios VIP
     zonaVip.innerHTML = "<h2 class =h2vip >Su capital supera los $100.000, puede acceder al SocialClub</h2> <button id=botonVip class=button>INGRESAR</button>"
 
     let sociosVip = []
@@ -50,59 +48,48 @@ swal({
 
     sociosVip.push(usuario1)
     console.log(sociosVip)
+   
+//JSON
+const almacenamiento = (nombre, apellido, capital) => { localStorage.setItem(nombre, apellido, capital) }
+almacenamiento("listaUsuarios", JSON.stringify(usuario1))
+JSON.stringify(localStorage.getItem(usuario1))
 
-
-/*------------------------------------------------------------------------------ */
-
+//Creando la tabla VIP
 function inicializarElementos(){
-  tabla = document.getElementById("tablaVip")
+  tabla = document.getElementById("tablaVip") //Llamando a los inputs
   nombre = document.querySelector("#nombre").value;
   apellido = document.querySelector("#apellido").value;
   capital = parseFloat(document.querySelector("#capital").value)
 }
 
-function inicializarEventos(){
-  tabla.onsubmit = (event) => validarFormulario(event);
+//Funcion para limpiar la tabla
+function limpiarTabla(){
+  while(tablaVip.rows.length> 1){
+    tablaVip.deleteRow(1)
+  }
 }
+limpiarTabla()
 
-function validarFormulario(event){
-  event.preventDefault();
-  let nombre = nombre.value
-  let apellido = apellido.value
-  let capital = capital.value
-  let producto = new Usuario(nombre, apellido, capital)
-  Usuario.push(producto);
-  tabla.reset();
-  agregarProductosTabla();
-}
-
-function agregarProductosTabla(){
+//Funcion para agregar los usuarios a la tabla
+function agregarUsuariosTabla(){
 sociosVip.forEach((Usuario) =>{
-  let filatabla = document.createElement("tr");
-  filatabla.innerHTML = `
-  <td>${Usuario.nombre}</td>
-  <td>${Usuario.apellido}</td>
-  <td>${Usuario.capital}</td>`;
+  let filatabla = document.createElement("tr"); //Agregando los datos del usuario a la tabla
+  filatabla.innerHTML = ` 
+  <td class=color>${Usuario.nombre}</td>
+  <td class=color>${Usuario.apellido}</td>
+  <td class=color>${Usuario.capital}</td>`;
   tabla.tBodies[0].append(filatabla)
 })
 }
 
 function main() {
   inicializarElementos();
-  inicializarEventos(); 
+  agregarUsuariosTabla();
 }
+
+//INICIO DE CICLO
 main()
 
-
-
-//----------------------------------------------------------------------------------------    
-   
-    
-//JSON
-        const almacenamiento = (nombre, apellido, capital) => { localStorage.setItem(nombre, apellido, capital) }
-        almacenamiento("listaUsuarios", JSON.stringify(usuario1))
-
-        JSON.stringify(localStorage.getItem(usuario1))
       } //Cierre Evento VIP
      )//Cierre evento vip
 
@@ -110,10 +97,27 @@ main()
   } //Cierre Evento Principal
 ) //Cierre boton calcular principal
 
+//API de noticias 
+/*let apinews = 'https://newsapi.org/v2/everything?' +
+          'q=Apple&' +
+          'from=2022-08-15&' +
+          'sortBy=popularity&' +
+          'apiKey=fd31390d08db45c1a56ac22b49fbb3b5';
 
-let urlApi = 'https://jsonplaceholder.typicode.com/users'
-fetch(urlApi)
-	.then(response => response.json())
-	.then(response => console.log(response))
-	.catch(err => console.error(err));
+          let req = new Request(apinews);
+          fetch(req)
+              .then(function(response) {
+                  console.log(response.json());
+              })
+
+function getnews(){
+  fetch('https://cors-anywhere.herokuapp.com/https://newsapi.org/v2/top-headlines?country=us&apikey=fd31390d08db45c1a56ac22b49fbb3b5',{headers:new Headers({"X-Requested-With":"A"})})
+  .then(a=> a.json())
+  .then(response=>{
+    for(var i=0; i<response.articles.length; i++){
+      document.getElementById("output").innerHTML +="<div style='padding-top: 20px;'><img style='float:left; width 150px;'src="+response.articles[i].urlToImage+"'><h1>"+response.articles[i].urlToImage+"'><h1>"+response.articles[i].title+"</h1>"+response.articles[i].source.name+"<br>"+response.articles[i].description+"<a href="+response.articles[i].url+"'target='_blank'>"+response.articles[i].url+"</a></div>"
+    }
+  })
+}
+*/
 

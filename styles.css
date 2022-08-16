@@ -98,3 +98,7 @@ body {
   width: 100%;
   margin-top: 100px;
 }
+
+.color td{
+  color: white;
+}
